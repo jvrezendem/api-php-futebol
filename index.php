@@ -59,3 +59,28 @@ if(mysqli_num_rows($tabelaJogador) > 0){
 <?php
 }
 ?>
+
+<?php
+//criação da tabela de clubes
+if(mysqli_num_rows($tabelaClube) > 0){
+?>
+
+<tr id="nenhumClube"><td align="center"> Nenhum clube encontrado. </td></tr>
+<tr id="adicionarClube"><td align="center"><input type="button" value="Adicionar Clube"> </td></tr>
+
+<?php
+//Se houver dados, exibe a tabela de clubes
+}else{
+?>
+
+<tr id="dadosClubes" bgcolor="grey">
+    <td id="colunaID" align="left"> ID </td>
+    <td id="colunaNome" align="left"> Nome </td>
+    <td id="colunaAnoFundacao" align="left"> Ano de fundação </td>
+    <td id="colunaCidade" align="left"> Cidade </td>
+    <td id="colunaEstado" align="left"> Estado </td>
+</tr>
+
+<?php
+}
+?>
