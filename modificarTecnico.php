@@ -9,11 +9,9 @@ if(!$con){
     die("Conexão falhou!" . mysqli_connect_error());
 }
 
-// Recupera o código enviado pelo botão Editar do index
 $codigo = $_GET["codigo"];
 
-// Consulta os dados atuais do clube para preencher o formulário
-$sql = "SELECT * FROM clube WHERE idClube = " . $codigo;
+$sql = "SELECT * FROM tecnico WHERE idTecnico = " . $codigo;
 $result = mysqli_query($con, $sql);
 $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
 mysqli_close($con);
@@ -22,60 +20,23 @@ mysqli_close($con);
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Modificar Clube</title>
+        <title>Modificar Técnico</title>
     </head>
     <body>
-        <h1 id="titulo">Modificar Clube</h1>
+        <h1 id="titulo">Modificar Técnico</h1>
         <p id="descricao"> Central com dados de clubes, jogadores do futebol mundial</p>
 
-        <form action="addClube.php" method="POST">
-            
-            <input type="hidden" name="codigo" value="<?php echo $vetor["idClube"] ?>">
+        <form action="addTecnico.php" method="POST">
+            <input type="hidden" name="codigo" value="<?php echo $vetor["idTecnico"] ?>">
 
             <center>
-                <h3 id="tituloModificar">Modificar dados do clube</h3>
+                <h3 id="tituloModificar">Modificar dados do técnico</h3>
             </center>
 
             <table border = "1" cellspacing = "0">
                 <tr>
                     <td>
-                        <font size = "3"> Altere os dados do clube: </font>
-                    </td>
-                </tr>
-
-                <tr> 
-                    <td width = 20%>
-                        <font size = "3"> ID do Clube: </font>
-                    </td>
-                    <td colspan="2" width = 80%>
-                        <input type = "text" name = "idClube" value = "<?php echo $vetor["idClube"] ?>" maxlength="50" size="31"> 
-                    </td>
-                </tr>   
-
-                <tr> 
-                    <td width = 20%>
-                        <font size = "3"> Nome do Clube: </font>
-                    </td>
-                    <td colspan="2" width = 80%>
-                        <input type = "text" name = "nome" value = "<?php echo $vetor["nome"] ?>" maxlength="50" size="31"> 
-                    </td>
-                </tr>
-
-                <tr> 
-                    <td width = 20%>
-                        <font size = "3"> Ano de Fundação: </font>
-                    </td>
-                    <td colspan="2" width = 80%>
-                        <input type = "text" name = "anoFundacao" value = "<?php echo $vetor["anoFundacao"] ?>" maxlength="50" size="31"> 
-                    </td>
-                </tr>
-
-                <tr> 
-                    <td width = 20%>
-                        <font size = "3"> ID da Cidade: </font>
-                    </td>
-                    <td colspan="2" width = 80%>
-                        <input type = "text" name = "idCidade" value = "<?php echo $vetor["idCidade"] ?>" maxlength="50" size="31"> 
+                        <font size = "3"> Altere os dados do técnico: </font>
                     </td>
                 </tr>
 
@@ -85,6 +46,42 @@ mysqli_close($con);
                     </td>
                     <td colspan="2" width = 80%>
                         <input type = "text" name = "idTecnico" value = "<?php echo $vetor["idTecnico"] ?>" maxlength="50" size="31"> 
+                    </td>
+                </tr>   
+
+                <tr> 
+                    <td width = 20%>
+                        <font size = "3"> Nome: </font>
+                    </td>
+                    <td colspan="2" width = 80%>
+                        <input type = "text" name = "nome" value = "<?php echo $vetor["nome"] ?>" maxlength="50" size="31"> 
+                    </td>
+                </tr>
+
+                <tr> 
+                    <td width = 20%>
+                        <font size = "3"> Estilo de Jogo: </font>
+                    </td>
+                    <td colspan="2" width = 80%>
+                        <input type = "text" name = "estiloJogo" value = "<?php echo $vetor["estiloJogo"] ?>" maxlength="50" size="31"> 
+                    </td>
+                </tr>
+
+                <tr> 
+                    <td width = 20%>
+                        <font size = "3"> Data de Nascimento: </font>
+                    </td>
+                    <td colspan="2" width = 80%>
+                        <input type = "text" name = "dataNascimento" value = "<?php echo $vetor["dataNascimento"] ?>" maxlength="50" size="31"> 
+                    </td>
+                </tr>
+
+                <tr> 
+                    <td width = 20%>
+                        <font size = "3"> Nacionalidade: </font>
+                    </td>
+                    <td colspan="2" width = 80%>
+                        <input type = "text" name = "nacionalidade" value = "<?php echo $vetor["nacionalidade"] ?>" maxlength="30" size="31"> 
                     </td>
                 </tr>
 

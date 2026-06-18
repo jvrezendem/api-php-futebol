@@ -8,11 +8,11 @@ if(!$con){
     die("Conexão falhou!" . mysqli_connect_error());
 }
 
-// Recupera o ID do clube passado via URL
+// Recupera o ID da cidade passado via URL
 $codigo = $_GET['codigo'];
 
 // Executa a exclusão
-$sql = "DELETE FROM clube WHERE idClube = $codigo";
+$sql = "DELETE FROM cidade WHERE idCidade = $codigo";
 $resultado = mysqli_query($con, $sql);
 
 if($resultado){
@@ -20,8 +20,8 @@ if($resultado){
     header("Location: index.php");
     exit();
 } else {
-    // Se o clube possuir jogadores vinculados, a restrição de integridade vai disparar o erro aqui
-    echo "Erro ao excluir o clube: " . mysqli_error($con);
+    // Se a cidade estiver vinculada a algum clube existente, o banco não deixará apagar e avisará aqui
+    echo "Erro ao excluir a cidade: " . mysqli_error($con);
     mysqli_close($con);
 }
 ?>
