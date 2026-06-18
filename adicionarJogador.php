@@ -14,7 +14,7 @@ header("Content-type: text/html; charset=utf-8", true);
 
         <form action="addJogador.php" method="POST">
             <?php
-                if(isset($_GET["idJogador"])){
+                if(isset($_GET["codigo"])){
                     include("./config.php");
                     // Definindo a conexão com o banco de dados
                     $con = mysqli_connect($host, $login, $senha, $bd);
@@ -29,7 +29,7 @@ header("Content-type: text/html; charset=utf-8", true);
             </center>
             <?php 
                 //Consulta SQL a ser realizada
-                $sql = "SELECT * FROM jogador WHERE idJogador = ".$_GET["idJogador"];
+                $sql = "SELECT * FROM jogador WHERE idJogador = ".$_GET["codigo"];
                 $result = mysqli_query($con, $sql);
                 $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 mysqli_close($con);
