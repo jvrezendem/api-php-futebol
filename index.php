@@ -45,13 +45,13 @@ $tabelaClube = mysqli_query($con, $sqlClube);
             ?>
 
                 <tr id="dadosJogadores" bgcolor="grey">
-                    <td id="colunaID" align="left"> ID </td>
+                    <td id="colunaID" align="left"> Id Jogador </td>
                     <td id="colunaNome" align="left"> Nome </td>
-                    <td id="colunaNacionalidade" align="left"> Nacionalidade </td>
-                    <td id="colunaIdade" align="left"> Idade </td>
-                    <td id="colunaPosicao" align="left"> Posição </td>
-                    <td id="colunaClube" align="left"> Clube </td>
-                    <td id="colunaValorMercado" align="left"> Valor de mercado </td>
+                    <td id="colunaNacionalidade" align="left"> Posição Principal </td>
+                    <td id="colunaIdade" align="left"> Nacionalidade Esportiva </td>
+                    <td id="colunaPosicao" align="left"> Número da Camisa </td>
+                    <td id="colunaClube" align="left"> Data de Nascimento </td>
+                    <td id="colunaValorMercado" align="left"> Id do Clube </td>
                 </tr>
                 
                 <?php
@@ -97,11 +97,11 @@ $tabelaClube = mysqli_query($con, $sqlClube);
                 ?>
 
                     <tr id="dadosClubes" bgcolor="grey">
-                        <td id="colunaID" align="left"> ID </td>
+                        <td id="colunaID" align="left"> Id Clube </td>
                         <td id="colunaNome" align="left"> Nome </td>
                         <td id="colunaAnoFundacao" align="left"> Ano de fundação </td>
-                        <td id="colunaCidade" align="left"> Cidade </td>
-                        <td id="colunaEstado" align="left"> Estado </td>
+                        <td id="colunaCidade" align="left"> Id Cidade </td>
+                        <td id="colunaEstado" align="left"> Id Treinador </td>
                     </tr>
 
                     <?php
