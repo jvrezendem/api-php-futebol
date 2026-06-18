@@ -52,6 +52,7 @@ $tabelaClube = mysqli_query($con, $sqlClube);
                     <td id="colunaPosicao" align="left"> Número da Camisa </td>
                     <td id="colunaClube" align="left"> Data de Nascimento </td>
                     <td id="colunaValorMercado" align="left"> Id do Clube </td>
+                    <td align="center"> Ações </td>
                 </tr>
                 
                 <?php
@@ -67,6 +68,10 @@ $tabelaClube = mysqli_query($con, $sqlClube);
                         <td id="colunaPosicao" align="left"><?php echo $dadosJogador[4]; ?></td>
                         <td id="colunaClube" align="left"><?php echo $dadosJogador[5]; ?></td>
                         <td id="colunaValorMercado" align="left"><?php echo $dadosJogador[6]; ?></td>
+                        <td align="center">
+                            <input type="button" value="Excluir" onclick="location.href='excluirJogador.php?codigo=<?php echo $dadosJogador[0]; ?>'">
+                            <input type="button" value="Editar" onclick="location.href='adicionarJogador.php?codigo=<?php echo $dadosJogador[0]; ?>'">
+                        </td>
                     </tr>
 
                 <?php
@@ -75,7 +80,7 @@ $tabelaClube = mysqli_query($con, $sqlClube);
             <?php
             }
             ?>    
-            <tr id="adicionarJogador"><td align="center"><input type="submit" value="Adicionar Jogador"> </td></tr>
+            <tr id="adicionarJogador"><td colspan="8" align="center"><input type="submit" value="Adicionar Jogador"> </td></tr>
             </table>
         </form>
 
@@ -102,6 +107,7 @@ $tabelaClube = mysqli_query($con, $sqlClube);
                         <td id="colunaAnoFundacao" align="left"> Ano de fundação </td>
                         <td id="colunaCidade" align="left"> Id Cidade </td>
                         <td id="colunaEstado" align="left"> Id Treinador </td>
+                        <td align="center"> Ações </td>
                     </tr>
 
                     <?php
@@ -115,6 +121,10 @@ $tabelaClube = mysqli_query($con, $sqlClube);
                         <td id="colunaAnoFundacao" align="left"><?php echo $dadosClube[2]; ?></td>
                         <td id="colunaCidade" align="left"><?php echo $dadosClube[3]; ?></td>
                         <td id="colunaEstado" align="left"><?php echo $dadosClube[4]; ?></td>
+                        <td align="center">
+                            <input type="button" value="Excluir" onclick="location.href='excluirClube.php?codigo=<?php echo $dadosClube[0]; ?>'">
+                            <input type="button" value="Editar" onclick="location.href='adicionarClube.php?codigo=<?php echo $dadosClube[0]; ?>'">
+                        </td>
                     </tr>
 
                     <?php
@@ -123,7 +133,7 @@ $tabelaClube = mysqli_query($con, $sqlClube);
                 <?php
                 }
                 ?>
-                <tr id="adicionarClube"><td align="center"><input type="submit" value="Adicionar Clube"> </td></tr>
+                <tr id="adicionarClube"><td colspan="6" align="center"><input type="submit" value="Adicionar Clube"> </td></tr>
             </table>
         </form>
     </body>
