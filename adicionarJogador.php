@@ -12,9 +12,9 @@ header("Content-type: text/html; charset=utf-8", true);
         <h1 id="titulo">Adicionar e Modificar Jogador</h1>
         <p id="descricao"> Central com dados de clubes, jogadores do futebol mundial</p>
 
-        <form action="adicionarJogador.php" method="POST">
+        <form action="addJogador.php" method="POST">
             <?php
-                if(isset($_GET["codigo"])){
+                if(isset($_GET["idJogador"])){
                     include("./config.php");
                     // Definindo a conexão com o banco de dados
                     $con = mysqli_connect($host, $login, $senha, $bd);
@@ -34,7 +34,7 @@ header("Content-type: text/html; charset=utf-8", true);
                 $vetor = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 mysqli_close($con);
             ?>
-            <input type="hidden" name="idJogador" value="<?php echo $vetor["idJogador"] ?>">
+            <input type="hidden" name="codigo" value="<?php echo $vetor["idJogador"] ?>">
             <?php
                 }else{
             ?>
@@ -57,7 +57,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> ID do Jogador: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "idJogador" maxlenght = "50" value = "<?php echo $vetor["idJogador"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "idJogador" maxlenght = "50" value = "<?php echo @$vetor["idJogador"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>   
 
@@ -66,7 +66,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> Nome: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "nome" maxlenght = "50" value = "<?php echo $vetor["nome"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "nome" maxlenght = "50" value = "<?php echo @$vetor["nome"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>
 
@@ -75,7 +75,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> Posição principal: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "posicaoPrincipal" maxlenght = "50" value = "<?php echo $vetor["posicaoPrincipal"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "posicaoPrincipal" maxlenght = "50" value = "<?php echo @$vetor["posicaoPrincipal"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>
 
@@ -84,7 +84,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> Nacionalidade Esportiva: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "nacionalidadeEsportiva" maxlenght = "50" value = "<?php echo $vetor["nacionalidadeEsportiva"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "nacionalidadeEsportiva" maxlenght = "50" value = "<?php echo @$vetor["nacionalidadeEsportiva"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>
 
@@ -93,7 +93,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> Numero da camisa: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "numeroCamisa" maxlenght = "50" value = "<?php echo $vetor["numeroCamisa"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "numeroCamisa" maxlenght = "50" value = "<?php echo @$vetor["numeroCamisa"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>
 
@@ -102,7 +102,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> Data de nascimento: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "dataNascimento" maxlenght = "50" value = "<?php echo $vetor["dataNascimento"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "dataNascimento" maxlenght = "50" value = "<?php echo @$vetor["dataNascimento"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>
 
@@ -111,7 +111,7 @@ header("Content-type: text/html; charset=utf-8", true);
                         <font size = "3"> ID do Clube: </font>
                     </td>
                     <td colspan="2" width = 80%>
-                        <input type = "text" name = "idClube" maxlenght = "50" value = "<?php echo $vetor["idClube"] ?>" maxlength="50" size="31"> 
+                        <input type = "text" name = "idClube" maxlenght = "50" value = "<?php echo @$vetor["idClube"] ?>" maxlength="50" size="31"> 
                     </td>
                 </tr>
 
