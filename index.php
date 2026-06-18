@@ -12,10 +12,10 @@ if(!$con){
 }
 
 //definição dos dados de clube e jogador puxados do bd
-$sqlJogador = "SELECT * FROM jogador ORDER BY id";
+$sqlJogador = "SELECT * FROM jogador ORDER BY idJogador";
 $tabelaJogador = mysqli_query($con, $sqlJogador);
 
-$sqlClube = "SELECT * FROM clube ORDER BY id";
+$sqlClube = "SELECT * FROM clube ORDER BY idClube";
 $tabelaClube = mysqli_query($con, $sqlClube);
 ?>
 
