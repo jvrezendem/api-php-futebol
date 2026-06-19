@@ -1,36 +1,16 @@
 <?php
-include("config.php");
-
-$con = mysqli_connect($host, $login, $senha, $bd);
-
-if(!$con){
-    die("Conexão falhou!" . mysqli_connect_error());
-}
-
-$idTecnico      = $_POST['idTecnico'];
-$nome           = $_POST['nome'];
-$estiloJogo     = $_POST['estiloJogo'];
-$dataNascimento = $_POST['dataNascimento'];
-$nacionalidade  = $_POST['nacionalidade'];
-
-if(isset($_POST['codigo']) && !empty($_POST['codigo'])) {
-    $codigo = $_POST['codigo'];
-    $sql = "UPDATE tecnico 
-            SET idTecnico = '$idTecnico', nome = '$nome', estiloJogo = '$estiloJogo', dataNascimento = '$dataNascimento', nacionalidade = '$nacionalidade' 
-            WHERE idTecnico = $codigo";
-} else {
-    $sql = "INSERT INTO tecnico (idTecnico, nome, estiloJogo, dataNascimento, nacionalidade) 
-            VALUES ('$idTecnico', '$nome', '$estiloJogo', '$dataNascimento', '$nacionalidade')";
-}
-
-$resultado = mysqli_query($con, $sql);
-
-if($resultado){
-    mysqli_close($con);
-    header("Location: index.php");
-    exit();
-} else {
-    echo "Erro ao salvar o técnico: " . mysqli_error($con);
-    mysqli_close($con);
-}
+  include("./config.php");
+  $con = mysqli_connect($host, $login, $senha, $bd);
+  if(isset($_POST["codigo"])){
+    $sql = "SELECT idTecnico FROM tecnico WHERE idTecnico=".$_POST["codigo"];
+    $result = mysqli_query($con, $sql);
+    if(mysqli_num_rows($result)!=0){
+      $sql = "UPDATE tecnico SET nome='".$_POST["nome"]."',estiloJogo='".$_POST["estiloJogo"]."',nacionalidade='".$_POST["nacionalidade"]."',dataNascimento='".$_POST["dataNascimento"]."' WHERE idTecnico=".$_POST["codigo"];
+    }
+  }else{
+    $sql = "INSERT INTO tecnico VALUES (".$_POST["idTecnico"].",'".$_POST["nome"]."','".$_POST["estiloJogo"]."','".$_POST["nacionalidade"]."',".$_POST["dataNascimento"].")";
+  }
+  mysqli_query($con, $sql);
+  mysqli_close($con);
+  header("location: ./index.php");
 ?>

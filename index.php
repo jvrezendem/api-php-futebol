@@ -31,11 +31,19 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
         <title>Central do Futebol</title>
     </head>
     <body>
-        <h1 id="titulo">Página Inicial</h1>
-        <p id="descricao"> Central com dados de clubes, jogadores do futebol mundial</p>
+        
+        <div id="cabecalho-titulo">
+            <h1 id="titulo" >Página Inicial</h1>
+            <img src="logo.png" alt="Logo Central do Futebol" id="imagem-titulo" >
+        </div>
+
+        <p id="descricao"> Banco de dados com Dados atualizados do futebol brasileiro. Informações de Clubes, Técnicos, Cidades e Jogadores.</p>
+        
         
         <form name="form1"  method="POST" action="adicionarJogador.php">
-            <table border="1" cellspacing="0">
+
+            <table cellspacing="0" align="center" class="tabela">
+            <tr><td colspan="8"><h2 id="subtitulo"> Jogadores: </h2></td></tr>
             <?php
             if(mysqli_num_rows($tabelaJogador) == 0){
             ?>
@@ -81,7 +89,8 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
         <br>
 
         <form name="form2" method="POST" action="adicionarClube.php">
-            <table border="1" cellspacing="0">
+            <table cellspacing="0" align="center" class="tabela">
+                <tr><td colspan="8"><h2 id="subtitulo"> Clubes: </h2></td></tr>
                 <?php
                 if(mysqli_num_rows($tabelaClube) == 0){
                 ?>
@@ -109,7 +118,7 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
                         <td id="colunaEstado" align="left"><?php echo $dadosClube[4]; ?></td>
                         <td align="center">
                             <input type="button" value="Excluir" onclick="location.href='excluirClube.php?codigo=<?php echo $dadosClube[0]; ?>'">
-                            <input type="button" value="Editar" onclick="location.href='modificarClube.php?codigo=<?php echo $dadosClube[0]; ?>'">
+                            <input type="button" value="Editar" onclick="location.href='adicionarClube.php?codigo=<?php echo $dadosClube[0]; ?>'">
                         </td>
                     </tr>
                     <?php
@@ -121,9 +130,9 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
         </form>
 
         <br>
-
         <form name="form3" method="POST" action="adicionarCidade.php">
-            <table border="1" cellspacing="0">
+            <table cellspacing="0" align="center" class="tabela">
+                <tr><td colspan="8"><h2 id="subtitulo"> Cidades: </h2></td></tr >
                 <?php
                 if(mysqli_num_rows($tabelaCidade) == 0){
                 ?>
@@ -147,7 +156,7 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
                         <td id="colunaEstado" align="left"><?php echo $dadosCidade[2]; ?></td>
                         <td align="center">
                             <input type="button" value="Excluir" onclick="location.href='excluirCidade.php?codigo=<?php echo $dadosCidade[0]; ?>'">
-                            <input type="button" value="Editar" onclick="location.href='modificarCidade.php?codigo=<?php echo $dadosCidade[0]; ?>'">
+                            <input type="button" value="Editar" onclick="location.href='adicionarCidade.php?codigo=<?php echo $dadosCidade[0]; ?>'">
                         </td>
                     </tr>
                     <?php
@@ -161,7 +170,8 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
         <br>
 
         <form name="form4" method="POST" action="adicionarTecnico.php">
-            <table border="1" cellspacing="0">
+            <table cellspacing="0" align="center" class="tabela">
+                <tr><td colspan="6"><h2 id="subtitulo"> Técnicos: </h2></td></tr>
                 <?php
                 if(mysqli_num_rows($tabelaTecnico) == 0){
                 ?>
@@ -189,7 +199,7 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
                         <td id="colunaNacionalidade" align="left"><?php echo $dadosTecnico[4]; ?></td>
                         <td align="center">
                             <input type="button" value="Excluir" onclick="location.href='excluirTecnico.php?codigo=<?php echo $dadosTecnico[0]; ?>'">
-                            <input type="button" value="Editar" onclick="location.href='modificarTecnico.php?codigo=<?php echo $dadosTecnico[0]; ?>'">
+                            <input type="button" value="Editar" onclick="location.href='adicionarTecnico.php?codigo=<?php echo $dadosTecnico[0]; ?>'">
                         </td>
                     </tr>
                     <?php
@@ -201,3 +211,109 @@ $tabelaTecnico = mysqli_query($con, $sqlTecnico);
         </form>
     </body>
 </html>
+
+<style>
+    body {
+        background-color: #F4EAD7;
+    }
+    #titulo {
+        color: #123B35;
+        font-weight: bold;
+        font-size: 120px;
+    }
+
+    #cabecalho-titulo {
+    display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    #imagem-titulo {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+    }
+
+    #descricao {
+        color: #123B35;
+        font-weight: bold;
+        font-size: 24px;
+        padding-left: 100px;
+    }
+    .tabela {
+    width: 90%;
+    margin: 30px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #FAF6EB;
+
+    border: 2px solid #123B35;
+    border-radius: 22px;
+    overflow: hidden;
+
+    box-shadow: 0 18px 40px rgba(18, 59, 53, 0.12);
+}
+
+/* Células da tabela */
+.tabela td,
+.tabela th {
+    padding: 14px 16px;
+    border-bottom: 1px solid #D8CDB8;
+    border-right: 1px solid #D8CDB8;
+    color: #123B35;
+    font-weight: 600;
+}
+
+/* Remove borda da última coluna */
+.tabela td:last-child,
+.tabela th:last-child {
+    border-right: none;
+}
+
+/* Remove borda da última linha */
+.tabela tr:last-child td {
+    border-bottom: none;
+}
+
+/* Linha do título da tabela */
+.tabela h2 {
+    margin: 0;
+    padding: 18px;
+    color: #123B35;
+    font-size: 32px;
+}
+
+/* Cabeçalho das colunas */
+.tabela tr[bgcolor="grey"] td {
+    background-color: #123B35;
+    color: #FAF6EB;
+    font-weight: bold;
+}
+
+/* Linhas normais */
+.tabela tr:not(:first-child):not([bgcolor="grey"]):hover {
+    background-color: #E8F7F1;
+}
+
+/* Botões */
+input[type="button"],
+input[type="submit"] {
+    background-color: #123B35;
+    color: #FAF6EB;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #1F8F80;
+    transform: translateY(-2px);
+}
+</style>

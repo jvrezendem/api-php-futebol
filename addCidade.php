@@ -1,31 +1,16 @@
 <?php
-include("config.php");
-
-$con = mysqli_connect($host, $login, $senha, $bd);
-
-if(!$con){
-    die("Conexão falhou!" . mysqli_connect_error());
-}
-
-$idCidade = $_POST['idCidade'];
-$nome     = $_POST['nome'];
-$estado   = $_POST['estado'];
-
-if(isset($_POST['codigo']) && !empty($_POST['codigo'])) {
-    $codigo = $_POST['codigo'];
-    $sql = "UPDATE cidade SET idCidade = '$idCidade', nome = '$nome', estado = '$estado' WHERE idCidade = $codigo";
-} else {
-    $sql = "INSERT INTO cidade (idCidade, nome, estado) VALUES ('$idCidade', '$nome', '$estado')";
-}
-
-$resultado = mysqli_query($con, $sql);
-
-if($resultado){
-    mysqli_close($con);
-    header("Location: index.php");
-    exit();
-} else {
-    echo "Erro ao salvar a cidade: " . mysqli_error($con);
-    mysqli_close($con);
-}
+  include("./config.php");
+  $con = mysqli_connect($host, $login, $senha, $bd);
+  if(isset($_POST["codigo"])){
+    $sql = "SELECT idCidade FROM cidade WHERE idCidade=".$_POST["codigo"];
+    $result = mysqli_query($con, $sql);
+    if(mysqli_num_rows($result)!=0){
+      $sql = "UPDATE cidade SET nome='".$_POST["nome"]."',posicaoPrincipal='".$_POST["posicaoPrincipal"]."',nacionalidadeEsportiva='".$_POST["nacionalidadeEsportiva"]."',numeroCamisa=".$_POST["numeroCamisa"].",dataNascimento='".$_POST["dataNascimento"]."',idClube=".$_POST["idClube"]." WHERE idJogador=".$_POST["codigo"];
+    }
+  }else{
+    $sql = "INSERT INTO cidade VALUES (".$_POST["idCidade"].",'".$_POST["nome"]."','".$_POST["uf"]."')";
+  }
+  mysqli_query($con, $sql);
+  mysqli_close($con);
+  header("location: ./index.php");
 ?>

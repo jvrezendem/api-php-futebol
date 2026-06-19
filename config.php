@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
 $login = "root";
-$senha = "";
+$senha = "7854";
 $bd = "futebol";
 ?>
